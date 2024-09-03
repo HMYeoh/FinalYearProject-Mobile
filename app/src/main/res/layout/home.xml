@@ -9,22 +9,38 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/welcomeText"
+            android:id="@+id/home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Home Page"
             android:textSize="24sp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="80dp"/>
 
         <Button
-            android:id="@+id/nextPageButton"
+            android:id="@+id/homePageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="About"
-            android:layout_below="@id/welcomeText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile Page"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="230dp"/>
+
+        <Button
+            android:id="@+id/profilePageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="170dp"/>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

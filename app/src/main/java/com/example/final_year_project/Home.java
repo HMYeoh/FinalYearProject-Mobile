@@ -13,8 +13,8 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        Button nextPageButton = findViewById(R.id.nextPageButton);
-        nextPageButton.setOnClickListener(new View.OnClickListener() {
+        Button homePageButton = findViewById(R.id.homePageButton);
+        homePageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home.this, About.class);

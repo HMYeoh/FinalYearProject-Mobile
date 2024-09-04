@@ -1,22 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_weight="1">
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/welcomeText"
+            android:id="@+id/about"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test"
-            android:textSize="24sp"
+            android:text="About"
+            android:textSize="20sp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="25dp"/>
+
+        <TextView
+            android:id="@+id/aboutText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Know More About Us"
+            android:textSize="18sp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="25dp"/>
+
+        <TextView
+            android:id="@+id/aboutText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We are a dedicated group of hairstylist who wishes all the people can get the hairstyle they desire, as beauty can reflect oneself."
+            android:textSize="16sp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="25dp"/>
+
+        <TextView
+            android:id="@+id/servicesText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Services \n\n All the service in this app is available in the salon. If there are any requirements need to add or specify for the hairstyle, please notify us before the booking or notify us at the store before the service."
+            android:textSize="16sp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="180dp"
+            android:layout_marginRight="25dp"/>
+
+        <TextView
+            android:id="@+id/privacyPolicy2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="340dp"
+            android:layout_marginRight="25dp"
+            android:text="Privacy Policy
+                            \n\n Information We Collect
+                            \n\na. Personal Information: When you sign up, book appointments, or interact with the App, we may collect information such as your name, email address, and phone number.
+                            \n\nb. Usage Data: We may collect information on how you interact with our App, including bookings, stylist, and features used on the App.
+                            \n\n How We Use Your Personal Information
+                            \n\na. User Verification: We use registration information to verify users' eligibility.
+                            \n\nb. Booking Processing: Your booking information is used to book slots for the salon services.
+                            \n\n Security of Your Information
+                            \n\n We take appropriate precautions to guard against unauthorised access, use, or disclosure of your personal information.
+                            \n\n We don't share your information to outside parties unless it's mandated by law."
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+
 
     </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</LinearLayout>

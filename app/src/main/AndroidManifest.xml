@@ -26,6 +26,7 @@
         <activity android:name=".Home"></activity>
         <activity android:name=".About"></activity>
         <activity android:name=".Profile"></activity>
+        <activity android:name=".Contact_us"></activity>
     </application>
 
 </manifest>

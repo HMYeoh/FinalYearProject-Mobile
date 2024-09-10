@@ -54,4 +54,10 @@ public class Home extends AppCompatActivity {
         ImageButton toHome= findViewById(R.id.home);
         startActivity(intent);
     }
+
+    public void toContactUs(View view){
+        Intent intent = new Intent(this, Contact_us.class);
+        TextView toContactUs= findViewById(R.id.contactUs);
+        startActivity(intent);
+    }
 }

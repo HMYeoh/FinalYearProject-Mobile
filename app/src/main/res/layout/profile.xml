@@ -1,22 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/welcomeText"
-            android:layout_width="wrap_content"
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="This is Profile Page"
-            android:textSize="24sp"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"/>
+            android:background="#2596be"
+            android:padding="15dp"
+            android:text="Profile"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:backgroundTint="#2596be"
+            android:onClick="toHome"
+            android:src="@drawable/close_image" />
+
+
 
     </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/welcomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is Profile Page"
+                android:textSize="24sp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"/>
+
+            <EditText
+                android:id="@+id/profileName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="100dp"
+                android:hint="Name"/>
+
+            <EditText
+                android:id="@+id/profileEmail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="160dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"/>
+
+            <EditText
+                android:id="@+id/profilePhone"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="220dp"
+                android:hint="Phone"
+                android:inputType="phone"/>
+
+            <!-- Password field (Non-editable in this case) -->
+            <TextView
+                android:id="@+id/profilePassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password: ****"
+                android:layout_marginTop="280dp"
+                android:layout_marginLeft="30dp"/>
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/saveProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save Changes"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="320dp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

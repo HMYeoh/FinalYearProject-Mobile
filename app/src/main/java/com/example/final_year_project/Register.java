@@ -51,8 +51,56 @@ public class Register extends AppCompatActivity {
         String password = registerPassword.getText().toString().trim();
         String phone = registerPhone.getText().toString().trim();
 
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty()) {
-            Toast.makeText(Register.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+        // Validate name
+        if (name.isEmpty()) {
+            registerName.setError("Name is required");
+            registerName.requestFocus();
+            return;
+        }
+
+        // Validate email
+        if (email.isEmpty()) {
+            registerEmail.setError("Email is required");
+            registerEmail.requestFocus();
+            return;
+        }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            registerEmail.setError("Please provide a valid email");
+            registerEmail.requestFocus();
+            return;
+        }
+
+        // Validate phone number
+        if (phone.isEmpty()) {
+            registerPhone.setError("Phone number is required");
+            registerPhone.requestFocus();
+            return;
+        }
+
+        // Validate password
+        if (password.isEmpty()) {
+            registerPassword.setError("Password is required");
+            registerPassword.requestFocus();
+            return;
+        }
+        if (password.length() < 8) {
+            registerPassword.setError("Password must be at least 8 characters long");
+            registerPassword.requestFocus();
+            return;
+        }
+        if (!password.matches(".*[A-Z].*")) {
+            registerPassword.setError("Password must contain at least one capital letter");
+            registerPassword.requestFocus();
+            return;
+        }
+        if (!password.matches(".*[0-9].*")) {
+            registerPassword.setError("Password must contain at least one number");
+            registerPassword.requestFocus();
+            return;
+        }
+        if (!password.matches(".*[!@#$%^&*+=?-].*")) {
+            registerPassword.setError("Password must contain at least one special character");
+            registerPassword.requestFocus();
             return;
         }
 

@@ -8,6 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 public class Login extends AppCompatActivity {
 
@@ -41,8 +43,22 @@ public class Login extends AppCompatActivity {
         String email = loginEmail.getText().toString().trim();
         String password = loginPassword.getText().toString().trim();
 
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(Login.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+        // Validate email
+        if (email.isEmpty()) {
+            loginEmail.setError("Email is required");
+            loginEmail.requestFocus();
+            return;
+        }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            loginEmail.setError("Please provide a valid email");
+            loginEmail.requestFocus();
+            return;
+        }
+
+        // Validate password
+        if (password.isEmpty()) {
+            loginPassword.setError("Password is required");
+            loginPassword.requestFocus();
             return;
         }
 
@@ -53,8 +69,25 @@ public class Login extends AppCompatActivity {
                         Intent intent = new Intent(Login.this, Home.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                        // Check the exception type
+                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                            // Incorrect password
+                            loginPassword.setError("Incorrect password");
+                            loginPassword.requestFocus();
+                        } else if (task.getException() instanceof FirebaseAuthInvalidUserException) {
+                            // No account with this email
+                            loginEmail.setError("No account found with this email");
+                            loginEmail.requestFocus();
+                        } else {
+                            // Other failure (network issues, etc.)
+                            Toast.makeText(Login.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
+    }
+
+    public void toForgotPassword(android.view.View view) {
+        Intent intent = new Intent(Login.this, Forgot_password.class);
+        startActivity(intent);
     }
 }

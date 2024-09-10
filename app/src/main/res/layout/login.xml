@@ -51,6 +51,18 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp" />
 
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:layout_marginTop="350dp"
+            android:layout_marginLeft="55dp"
+            android:clickable="true"
+            android:onClick="toForgotPassword"/>
+
         <Button
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"

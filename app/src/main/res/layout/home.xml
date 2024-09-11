@@ -36,6 +36,17 @@
             android:onClick="openDrawer"
             android:src="@drawable/burger_image" />
 
+
+        <ImageButton
+            android:id="@+id/logout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="180dp"
+            android:backgroundTint="#00FFFFFF"
+            android:onClick="logout"
+            android:src="@drawable/logout_image" />
+
         </LinearLayout>
 
         <TextView

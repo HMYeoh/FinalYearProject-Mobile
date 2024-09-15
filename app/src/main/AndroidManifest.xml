@@ -28,6 +28,7 @@
         <activity android:name=".Profile"></activity>
         <activity android:name=".Contact_us"></activity>
         <activity android:name=".Forgot_password"></activity>
+        <activity android:name=".Service"></activity>
     </application>
 
 </manifest>

@@ -48,6 +48,13 @@
             android:src="@drawable/logout_image" />
 
         </LinearLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginTop="70dp">
 
         <TextView
             android:id="@+id/text"
@@ -56,9 +63,9 @@
             android:text="This is Home Page"
             android:textSize="24sp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"/>
+            android:layout_marginTop="10dp"/>
 
-
+        </RelativeLayout>
     </RelativeLayout>
 
     <!-- Drawer Menu Layout -->
@@ -78,6 +85,15 @@
             android:layout_marginLeft="30dp"
             android:text="Profile"
             android:onClick="toProfile"/>
+
+        <TextView
+            android:id="@+id/service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="30dp"
+            android:text="Service"
+            android:onClick="toService"/>
 
         <TextView
             android:id="@+id/about"

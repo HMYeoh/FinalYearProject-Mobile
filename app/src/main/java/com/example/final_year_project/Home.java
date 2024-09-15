@@ -69,6 +69,12 @@ public class Home extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toService(View view) {
+        Intent intent = new Intent(this, Service.class);
+        TextView toService = findViewById(R.id.service);
+        startActivity(intent);
+    }
+
     // Logout method
     private void logout() {
         FirebaseAuth.getInstance().signOut();  // Sign out from Firebase

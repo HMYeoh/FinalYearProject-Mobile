@@ -11,6 +11,14 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
+        <ImageView
+            android:id="@+id/serviceImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="110dp"
+            android:src="@drawable/logo_3"/>
+
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"

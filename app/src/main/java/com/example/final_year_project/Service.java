@@ -74,6 +74,42 @@ public class Service extends AppCompatActivity {
                 getHairCutServices();  // Fetch and display "Hair Cut" services
             }
         });
+
+        // Setup button for "Hair Wash & Blow" service
+        Button hairWashButton = findViewById(R.id.service2);
+        hairWashButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHairWashServices();  // Fetch and display "Hair Wash & Blow" services
+            }
+        });
+
+        // Setup button for "Colouring" service
+        Button colouringButton = findViewById(R.id.service3);
+        colouringButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getColouringServices();  // Fetch and display "Colouring" services
+            }
+        });
+
+        // Setup button for "Scalp Treatment" service
+        Button scalpTreatmentButton = findViewById(R.id.service4);
+        scalpTreatmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getScalpTreatmentServices();  // Fetch and display "Scalp Treatment" services
+            }
+        });
+
+        // Setup button for "Hair Treatment" service
+        Button hairTreatmentButton = findViewById(R.id.service5);
+        hairTreatmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHairTreatmentServices();  // Fetch and display "Hair Treatment" services
+            }
+        });
     }
 
     // Method to fetch and display all services
@@ -113,37 +149,83 @@ public class Service extends AppCompatActivity {
                 });
     }
 
-    // Method to navigate to the About page
-    public void toAbout(View view) {
-        Intent intent = new Intent(this, About.class);
-        startActivity(intent);
+    // Method to fetch "Hair Wash & Blow" services from Firestore
+    private void getHairWashServices() {
+        db.collection("services")
+                .whereEqualTo("serviceCategories", "Hair Wash & Blow")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        serviceList.clear();  // Clear the previous data before adding new data
+                        for (DocumentSnapshot document : task.getResult()) {
+                            ServiceModel service = document.toObject(ServiceModel.class);
+                            serviceList.add(service);  // Add each service to the list
+                        }
+                        serviceAdapter.notifyDataSetChanged();  // Notify adapter of data changes
+                    } else {
+                        Log.d("Firestore", "Error getting documents: ", task.getException());
+                    }
+                });
     }
 
-    // Method to navigate to the Profile page
-    public void toProfile(View view) {
-        Intent intent = new Intent(this, Profile.class);
-        startActivity(intent);
+    // Method to fetch "Colouring" services from Firestore
+    private void getColouringServices() {
+        db.collection("services")
+                .whereEqualTo("serviceCategories", "Colouring")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        serviceList.clear();  // Clear previous data
+                        for (DocumentSnapshot document : task.getResult()) {
+                            ServiceModel service = document.toObject(ServiceModel.class);
+                            serviceList.add(service);  // Add each service to the list
+                        }
+                        serviceAdapter.notifyDataSetChanged();  // Notify adapter of data changes
+                    } else {
+                        Log.d("Firestore", "Error getting documents: ", task.getException());
+                    }
+                });
     }
 
-    // Method to navigate to the Home page
-    public void toHome(View view) {
-        Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
+    // Method to fetch "Scalp Treatment" services from Firestore
+    private void getScalpTreatmentServices() {
+        db.collection("services")
+                .whereEqualTo("serviceCategories", "Scalp Treatment")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        serviceList.clear();  // Clear previous data
+                        for (DocumentSnapshot document : task.getResult()) {
+                            ServiceModel service = document.toObject(ServiceModel.class);
+                            serviceList.add(service);  // Add each service to the list
+                        }
+                        serviceAdapter.notifyDataSetChanged();  // Notify adapter of data changes
+                    } else {
+                        Log.d("Firestore", "Error getting documents: ", task.getException());
+                    }
+                });
     }
 
-    // Method to navigate to the Contact Us page
-    public void toContactUs(View view) {
-        Intent intent = new Intent(this, Contact_us.class);
-        startActivity(intent);
+    // Method to fetch "Hair Treatment" services from Firestore
+    private void getHairTreatmentServices() {
+        db.collection("services")
+                .whereEqualTo("serviceCategories", "Hair Treatment")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        serviceList.clear();  // Clear previous data
+                        for (DocumentSnapshot document : task.getResult()) {
+                            ServiceModel service = document.toObject(ServiceModel.class);
+                            serviceList.add(service);  // Add each service to the list
+                        }
+                        serviceAdapter.notifyDataSetChanged();  // Notify adapter of data changes
+                    } else {
+                        Log.d("Firestore", "Error getting documents: ", task.getException());
+                    }
+                });
     }
 
-    // Method to navigate to the Service page
-    public void toService(View view) {
-        Intent intent = new Intent(this, Service.class);
-        startActivity(intent);
-    }
-
-    // Logout method
+    // Method to logout the user
     private void logout() {
         FirebaseAuth.getInstance().signOut();  // Sign out from Firebase
         Toast.makeText(Service.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
@@ -152,5 +234,11 @@ public class Service extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);  // Clear task to prevent returning back
         startActivity(intent);
         finish();  // Finish the Service activity
+    }
+
+    public void toHome(View view) {
+        Intent intent = new Intent(this, Home.class);
+        ImageButton toHome = findViewById(R.id.home);
+        startActivity(intent);
     }
 }

@@ -24,6 +24,7 @@ public class Service extends AppCompatActivity {
     RecyclerView recyclerView;
     ServiceAdapter serviceAdapter;
     ArrayList<ServiceModel> serviceList = new ArrayList<>();
+    private View footer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class Service extends AppCompatActivity {
         openDrawer = findViewById(R.id.menu);
         logoutButton = findViewById(R.id.logout);
         recyclerView = findViewById(R.id.recyclerView);
+        footer = findViewById(R.id.footer);
 
         // Initialize Firestore instance
         db = FirebaseFirestore.getInstance();
@@ -110,6 +112,15 @@ public class Service extends AppCompatActivity {
                 getHairTreatmentServices();  // Fetch and display "Hair Treatment" services
             }
         });
+
+        boolean hasBookings = getIntent().getBooleanExtra("HAS_BOOKINGS", false);
+
+        // Show or hide the footer based on the flag
+        if (hasBookings) {
+            footer.setVisibility(View.VISIBLE);
+        } else {
+            footer.setVisibility(View.GONE);
+        }
     }
 
     // Method to fetch and display all services
@@ -239,6 +250,11 @@ public class Service extends AppCompatActivity {
     public void toHome(View view) {
         Intent intent = new Intent(this, Home.class);
         ImageButton toHome = findViewById(R.id.home);
+        startActivity(intent);
+    }
+
+    public void toBookingOverview(View view) {
+        Intent intent = new Intent(this, BookingOverview.class);
         startActivity(intent);
     }
 }

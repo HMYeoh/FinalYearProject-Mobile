@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
@@ -49,30 +49,21 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_marginTop="70dp">
-
             <TextView
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Services"
-                android:textSize="24sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="240dp"/>
-
-        </RelativeLayout>
+                android:textSize="25sp"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="20dp"/>
 
         <!-- Horizontal ScrollView containing buttons -->
         <HorizontalScrollView
             android:id="@+id/horizontalScrollView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="100dp"
             android:layout_marginLeft="5dp">
 
             <LinearLayout
@@ -119,9 +110,37 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="210dp" />
+            android:layout_width="380dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="170dp" />
+
+        <RelativeLayout
+            android:id="@+id/footer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="500dp"
+            android:background="#FEFAFD"
+            android:gravity="center">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/continueToOverview"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Continue"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:onClick="toBookingOverview"/>
+        </RelativeLayout>
 
     </RelativeLayout>
 

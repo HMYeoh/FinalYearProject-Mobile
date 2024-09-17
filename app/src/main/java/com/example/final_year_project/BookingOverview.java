@@ -100,6 +100,7 @@ public class BookingOverview extends AppCompatActivity {
 
     public void toService(View view) {
         Intent intent = new Intent(this, Service.class);
+        intent.putExtra("HAS_BOOKINGS", !bookingList.isEmpty());
         startActivity(intent);
     }
 

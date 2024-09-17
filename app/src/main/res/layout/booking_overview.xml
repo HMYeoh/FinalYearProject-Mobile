@@ -12,7 +12,7 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="120dp"
             android:background="@color/black" />
 
         <LinearLayout
@@ -55,28 +55,59 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_marginTop="70dp">
-
             <TextView
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Booking Overview"
                 android:textSize="24sp"
-                android:layout_marginTop="10dp"/>
-
-        </RelativeLayout>
+                android:layout_marginTop="75dp"
+                android:layout_marginLeft="90dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="145dp" />
+            android:layout_width="380dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="120dp" />
+
+        <RelativeLayout
+            android:id="@+id/bookingFooter"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#FEFAFD"
+            android:gravity="center">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/backToService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Back"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:onClick="toService"/>
+
+            <Button
+                android:id="@+id/continueToChooseStaff"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Continue"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:onClick="toChooseStaff"/>
+        </RelativeLayout>
 
     </RelativeLayout>
 

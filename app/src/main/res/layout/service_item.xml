@@ -69,6 +69,14 @@
                 android:text="Service Price"
                 android:textColor="#ffffff"/>
 
+            <Button
+                android:id="@+id/bookButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Book"
+                android:layout_marginTop="-40dp"
+                android:layout_marginLeft="200dp"/>
+
         </LinearLayout>
 
     </LinearLayout>

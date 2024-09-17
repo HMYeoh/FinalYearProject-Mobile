@@ -29,6 +29,7 @@
         <activity android:name=".Contact_us"></activity>
         <activity android:name=".Forgot_password"></activity>
         <activity android:name=".Service"></activity>
+        <activity android:name=".BookingOverview"></activity>
     </application>
 
 </manifest>

@@ -99,13 +99,31 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp" />
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableStart="@drawable/custom_checkbox"
+            android:layout_marginTop="470dp"
+            android:layout_marginLeft="50dp"/>
+
+        <TextView
+            android:id="@+id/toTermsCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agree to Terms and Condition"
+            android:textSize="16sp"
+            android:layout_marginTop="482dp"
+            android:layout_marginLeft="90dp"
+            android:onClick="toTermsCondition"/>
+
         <Button
             android:id="@+id/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="500dp"
+            android:layout_marginTop="520dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp" />
 
@@ -116,7 +134,7 @@
             android:text="Already have an account? Login"
             android:layout_centerHorizontal="true"
             android:textSize="16sp"
-            android:layout_marginTop="555dp"
+            android:layout_marginTop="570dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:onClick="toLogin"/>

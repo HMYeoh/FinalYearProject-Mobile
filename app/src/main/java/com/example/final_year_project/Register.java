@@ -33,7 +33,8 @@ public class Register extends AppCompatActivity {
         registerPassword = findViewById(R.id.registerPassword);
         registerPhone = findViewById(R.id.registerPhone);
         Button registerButton = findViewById(R.id.registerButton);
-        TextView toLoginPage = findViewById(R.id.toLoginPage); // Get the TextView
+        TextView toLoginPage = findViewById(R.id.toLoginPage);
+        TextView toTermsCondition = findViewById(R.id.toTermsCondition);
 
         registerButton.setOnClickListener(v -> registerUser());
 
@@ -41,6 +42,11 @@ public class Register extends AppCompatActivity {
         toLoginPage.setOnClickListener(v -> {
             // Start the Login activity when the TextView is clicked
             Intent intent = new Intent(Register.this, Login.class);
+            startActivity(intent);
+        });
+
+        toTermsCondition.setOnClickListener(v -> {
+            Intent intent = new Intent(Register.this, TermsCondition.class);
             startActivity(intent);
         });
     }

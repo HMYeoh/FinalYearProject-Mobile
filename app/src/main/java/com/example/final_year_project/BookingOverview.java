@@ -112,4 +112,9 @@ public class BookingOverview extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void toStylist(View view) {
+        Intent intent = new Intent(this, Stylist.class);
+        startActivity(intent);
+    }
 }

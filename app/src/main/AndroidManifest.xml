@@ -31,6 +31,7 @@
         <activity android:name=".Service"></activity>
         <activity android:name=".BookingOverview"></activity>
         <activity android:name=".TermsCondition"></activity>
+        <activity android:name=".Stylist"></activity>
     </application>
 
 </manifest>

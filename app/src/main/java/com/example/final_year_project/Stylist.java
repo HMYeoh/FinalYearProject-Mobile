@@ -28,7 +28,7 @@ public class Stylist extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         stylistList = new ArrayList<>();
-        stylistAdapter = new StylistAdapter(stylistList);
+        stylistAdapter = new StylistAdapter(stylistList, this);
         recyclerView.setAdapter(stylistAdapter);
 
         loadStylists();

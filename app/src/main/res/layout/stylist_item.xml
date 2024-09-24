@@ -20,4 +20,12 @@
         android:layout_marginLeft="16dp"
         android:text="Username"
         android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/bookButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="130dp"/>
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.final_year_project;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -122,24 +123,98 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
     }
 
     private void saveReservation(String date, String timeSlot, String stylistName, String userEmail, String userName, String userId, List<Map<String, String>> services) {
-        // Create a reservation object
-        Map<String, Object> reservation = new HashMap<>();
-        reservation.put("date", date);
-        reservation.put("timeSlot", timeSlot);
-        reservation.put("stylistName", stylistName);
-        reservation.put("userEmail", userEmail);
-        reservation.put("userName", userName); // Add the user name to the reservation
-        reservation.put("userId", userId); // Add the user ID to the reservation
-        reservation.put("services", services); // Store the services as an array
-
-        // Add the reservation to the "reservations" collection
+        // Check if the stylist is already booked for the selected date and time slot
         db.collection("reservations")
-                .add(reservation)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(context, "Reservation Successful!", Toast.LENGTH_SHORT).show();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(context, "Error booking reservation: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                .whereEqualTo("date", date)
+                .whereEqualTo("timeSlot", timeSlot)
+                .whereEqualTo("stylistName", stylistName)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (!task.getResult().isEmpty()) {
+                            // Stylist is already booked for this time slot, show error message
+                            Toast.makeText(context, "This time slot is already booked for the selected stylist.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Stylist is not booked, proceed with reservation
+                            Map<String, Object> reservation = new HashMap<>();
+                            reservation.put("date", date);
+                            reservation.put("timeSlot", timeSlot);
+                            reservation.put("stylistName", stylistName);
+                            reservation.put("userEmail", userEmail);
+                            reservation.put("userName", userName); // Add the user name to the reservation
+                            reservation.put("userId", userId); // Add the user ID to the reservation
+                            reservation.put("services", services); // Store the services as an array
+
+                            // Add the reservation to the "reservations" collection
+                            db.collection("reservations")
+                                    .add(reservation)
+                                    .addOnSuccessListener(documentReference -> {
+                                        // Show a success message
+                                        Toast.makeText(context, "Reservation Successful!", Toast.LENGTH_SHORT).show();
+
+                                        // Delete user data from "stylists" and "bookings" collections
+                                        deleteUserDataFromStylists(userEmail);
+                                        deleteUserDataFromBookings(userEmail);
+
+                                        // Navigate to Home.java after successful reservation
+                                        Intent intent = new Intent(context, Home.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Ensure intent works from adapter
+                                        context.startActivity(intent);
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        // Show an error message if the reservation fails
+                                        Toast.makeText(context, "Error booking reservation: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    });
+                        }
+                    } else {
+                        Toast.makeText(context, "Error checking for existing reservations", Toast.LENGTH_SHORT).show();
+                    }
                 });
     }
+
+
+    // Delete user data from the "stylists" collection based on email
+    private void deleteUserDataFromStylists(String userEmail) {
+        db.collection("stylists")
+                .whereEqualTo("userEmail", userEmail)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            db.collection("stylists").document(document.getId()).delete()
+                                    .addOnSuccessListener(aVoid -> {
+                                        // Optionally, show a message or log deletion success
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        Toast.makeText(context, "Error deleting stylist data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    });
+                        }
+                    } else {
+                        Toast.makeText(context, "Error fetching stylist data for deletion", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    // Delete user data from the "bookings" collection based on email
+    private void deleteUserDataFromBookings(String userEmail) {
+        db.collection("bookings")
+                .whereEqualTo("userEmail", userEmail)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            db.collection("bookings").document(document.getId()).delete()
+                                    .addOnSuccessListener(aVoid -> {
+                                        // Optionally, show a message or log deletion success
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        Toast.makeText(context, "Error deleting booking data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    });
+                        }
+                    } else {
+                        Toast.makeText(context, "Error fetching booking data for deletion", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
 }

@@ -71,7 +71,7 @@
                 android:text="Back"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:onClick="toStylist"/>
+                />
 
             <TextView
                 android:id="@+id/selectedDateTextView"

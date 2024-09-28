@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -101,6 +102,12 @@ public class BookingOverview extends AppCompatActivity {
     public void toService(View view) {
         Intent intent = new Intent(this, Service.class);
         intent.putExtra("HAS_BOOKINGS", !bookingList.isEmpty());
+        startActivity(intent);
+    }
+
+    public void toBookingHistory(View view) {
+        Intent intent = new Intent(this, BookingHistory.class);
+        TextView toBookingHistory = findViewById(R.id.bookingHistory);
         startActivity(intent);
     }
 

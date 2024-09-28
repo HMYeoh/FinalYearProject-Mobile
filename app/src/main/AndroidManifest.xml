@@ -33,6 +33,7 @@
         <activity android:name=".TermsCondition"></activity>
         <activity android:name=".Stylist"></activity>
         <activity android:name=".Date"></activity>
+        <activity android:name=".BookingHistory"></activity>
     </application>
 
 </manifest>

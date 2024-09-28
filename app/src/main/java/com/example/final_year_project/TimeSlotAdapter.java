@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.List;
@@ -144,6 +145,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
                             reservation.put("userName", userName); // Add the user name to the reservation
                             reservation.put("userId", userId); // Add the user ID to the reservation
                             reservation.put("services", services); // Store the services as an array
+                            reservation.put("createdAt", FieldValue.serverTimestamp()); // Add server timestamp
 
                             // Add the reservation to the "reservations" collection
                             db.collection("reservations")
@@ -171,6 +173,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
                     }
                 });
     }
+
 
 
     // Delete user data from the "stylists" collection based on email

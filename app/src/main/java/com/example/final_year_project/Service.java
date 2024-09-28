@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -247,6 +248,18 @@ public class Service extends AppCompatActivity {
         finish();  // Finish the Service activity
     }
 
+    public void toAbout(View view) {
+        Intent intent = new Intent(this, About.class);
+        TextView toAbout = findViewById(R.id.about);
+        startActivity(intent);
+    }
+
+    public void toProfile(View view) {
+        Intent intent = new Intent(this, Profile.class);
+        TextView toProfile = findViewById(R.id.profile);
+        startActivity(intent);
+    }
+
     public void toHome(View view) {
         Intent intent = new Intent(this, Home.class);
         ImageButton toHome = findViewById(R.id.home);
@@ -255,6 +268,24 @@ public class Service extends AppCompatActivity {
 
     public void toBookingOverview(View view) {
         Intent intent = new Intent(this, BookingOverview.class);
+        startActivity(intent);
+    }
+
+    public void toContactUs(View view) {
+        Intent intent = new Intent(this, Contact_us.class);
+        TextView toContactUs = findViewById(R.id.contactUs);
+        startActivity(intent);
+    }
+
+    public void toService(View view) {
+        Intent intent = new Intent(this, Service.class);
+        TextView toService = findViewById(R.id.service);
+        startActivity(intent);
+    }
+
+    public void toBookingHistory(View view) {
+        Intent intent = new Intent(this, BookingHistory.class);
+        TextView toBookingHistory = findViewById(R.id.bookingHistory);
         startActivity(intent);
     }
 }

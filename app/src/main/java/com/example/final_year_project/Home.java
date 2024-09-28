@@ -75,6 +75,12 @@ public class Home extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toBookingHistory(View view) {
+        Intent intent = new Intent(this, BookingHistory.class);
+        TextView toBookingHistory = findViewById(R.id.bookingHistory);
+        startActivity(intent);
+    }
+
     // Logout method
     private void logout() {
         FirebaseAuth.getInstance().signOut();  // Sign out from Firebase

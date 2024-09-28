@@ -19,6 +19,6 @@
         android:layout_height="wrap_content"
         android:text="Book"
         android:textColor="#FFFFFF"
-        android:backgroundTint="@color/colorAccent" /> <!-- Add a default color -->
+        android:backgroundTint="@color/colorAccent" />
 
 </LinearLayout>

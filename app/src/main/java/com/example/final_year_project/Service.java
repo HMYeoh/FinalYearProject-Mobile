@@ -3,9 +3,12 @@ package com.example.final_year_project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
@@ -32,6 +36,35 @@ public class Service extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service);
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        TextView userNameTextView = findViewById(R.id.userName);
+
+        if (currentUser != null) {
+            String userId = currentUser.getUid(); // Get current user UID
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            // Fetch user data from Firestore
+            db.collection("users").document(userId).get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String userName = document.getString("name"); // Assuming your field is named "name"
+                                userNameTextView.setText(userName != null ? userName : "User Name");
+                            } else {
+                                Log.d("HomeActivity", "No such user document");
+                                userNameTextView.setText("User Name"); // Fallback
+                            }
+                        } else {
+                            Log.d("HomeActivity", "Get failed with ", task.getException());
+                            userNameTextView.setText("User Name"); // Fallback
+                        }
+                    });
+        } else {
+            Log.d("HomeActivity", "No user is logged in.");
+            userNameTextView.setText("User Name"); // Fallback
+        }
+
         drawerLayout = findViewById(R.id.drawerLayout);
         openDrawer = findViewById(R.id.menu);
         logoutButton = findViewById(R.id.logout);
@@ -48,6 +81,45 @@ public class Service extends AppCompatActivity {
 
         // Fetch and display all services when the page loads
         getAllServices();
+
+        // Get references to the ImageButtons
+        ImageButton menuButton = findViewById(R.id.menu);
+        ImageButton logoutButton = findViewById(R.id.logout);
+
+        // Load the animations
+        Animation zoomIn = AnimationUtils.loadAnimation(this, R.anim.zoom_in);
+        Animation zoomOut = AnimationUtils.loadAnimation(this, R.anim.zoom_out);
+
+        // Apply animations on click for the Menu button
+        menuButton.setOnClickListener(view -> {
+            view.startAnimation(zoomIn);
+            // Perform other actions (e.g., open the drawer)
+        });
+
+        // Apply animations on click for the Logout button
+        logoutButton.setOnClickListener(view -> {
+            view.startAnimation(zoomIn);
+            // Perform other actions (e.g., log out)
+        });
+
+        // Optionally add zoom-out animation when the button is released
+        menuButton.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_UP:
+                    v.startAnimation(zoomOut);
+                    break;
+            }
+            return false;
+        });
+
+        logoutButton.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_UP:
+                    v.startAnimation(zoomOut);
+                    break;
+            }
+            return false;
+        });
 
         // Open/Close Drawer functionality
         openDrawer.setOnClickListener(new View.OnClickListener() {

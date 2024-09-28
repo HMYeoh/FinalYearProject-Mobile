@@ -22,89 +22,94 @@ import java.util.Map;
 
 public class Profile extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
-    private EditText profileName, profileEmail, profilePhone;
-    private TextView welcomeText, profilePassword;
+    private EditText profileName;
+    private EditText profileEmail;
+    private EditText profilePhone;
+    private TextView welcomeText;
     private Button saveProfile;
+    private ImageButton toHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+        // Initialize Firestore
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        // Initialize the TextViews
+        // Initialize UI elements
         welcomeText = findViewById(R.id.welcomeText);
         profileName = findViewById(R.id.profileName);
         profileEmail = findViewById(R.id.profileEmail);
         profilePhone = findViewById(R.id.profilePhone);
-        profilePassword = findViewById(R.id.profilePassword);
         saveProfile = findViewById(R.id.saveProfile);
+        toHome = findViewById(R.id.home);
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            // Get user ID from the currently logged-in user
             String userId = currentUser.getUid();
-
-            // Retrieve the user details from Firestore
+            // Fetch user data from Firestore
             db.collection("users").document(userId).get()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                // Extract user details from Firestore
                                 String name = document.getString("name");
                                 String email = document.getString("email");
                                 String phone = document.getString("phone");
 
-                                // Display the user details
-                                welcomeText.setText("Welcome, " + name + "!");
+                                // Set user data to EditTexts
+                                welcomeText.setText("Welcome, " + name );
                                 profileName.setText(name);
                                 profileEmail.setText(email);
                                 profilePhone.setText(phone);
-
-                                // Since password is not saved in Firestore, you can't fetch it directly
-                                profilePassword.setText("Password: ****");
                             } else {
-                                Toast.makeText(Profile.this, "User data not found", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Profile.this, "User not found", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(Profile.this, "Error fetching user data", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Profile.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
                         }
                     });
-        }
-
-        // Save button functionality
-        saveProfile.setOnClickListener(v -> saveUserProfile());
-    }
-
-    private void saveUserProfile() {
-        String userId = mAuth.getCurrentUser().getUid();
-        String updatedName = profileName.getText().toString();
-        String updatedEmail = profileEmail.getText().toString();
-        String updatedPhone = profilePhone.getText().toString();
-
-        if (!updatedName.isEmpty() && !updatedEmail.isEmpty() && !updatedPhone.isEmpty()) {
-            Map<String, Object> userUpdates = new HashMap<>();
-            userUpdates.put("name", updatedName);
-            userUpdates.put("email", updatedEmail);
-            userUpdates.put("phone", updatedPhone);
-
-            db.collection("users").document(userId)
-                    .update(userUpdates)
-                    .addOnSuccessListener(aVoid -> Toast.makeText(Profile.this, "Profile updated successfully!", Toast.LENGTH_SHORT).show())
-                    .addOnFailureListener(e -> Toast.makeText(Profile.this, "Error updating profile", Toast.LENGTH_SHORT).show());
         } else {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No user logged in", Toast.LENGTH_SHORT).show();
         }
+
+        // Set up the save button listener
+        saveProfile.setOnClickListener(view -> saveProfileData(currentUser.getUid()));
     }
 
-    public void toHome(View view){
+    private void saveProfileData(String userId) {
+        // Get updated values from EditTexts
+        String name = profileName.getText().toString().trim();
+        String email = profileEmail.getText().toString().trim();
+        String phone = profilePhone.getText().toString().trim();
+
+        // Validate input
+        if (name.isEmpty() || email.isEmpty() || phone.isEmpty()) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create a Map to hold the updated data
+        Map<String, Object> userUpdates = new HashMap<>();
+        userUpdates.put("name", name);
+        userUpdates.put("email", email);
+        userUpdates.put("phone", phone);
+
+        // Save data to Firestore
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users").document(userId)
+                .update(userUpdates)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(Profile.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(Profile.this, "Error updating profile: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    public void toHome(View view) {
         Intent intent = new Intent(this, Home.class);
-        ImageButton toHome= findViewById(R.id.home);
         startActivity(intent);
     }
 }

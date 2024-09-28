@@ -39,6 +39,9 @@ public class Date extends AppCompatActivity {
         selectedDateTextView = findViewById(R.id.selectedDateTextView);
         timeSlotRecyclerView = findViewById(R.id.timeSlotRecyclerView);
 
+        // Set the minimum date to the current date
+        calendarView.setMinDate(System.currentTimeMillis());
+
         // Set up RecyclerView for time slots
         timeSlots = new ArrayList<>();
         timeSlotAdapter = new TimeSlotAdapter(timeSlots, this, null); // Initialize with null

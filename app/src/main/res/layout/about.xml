@@ -47,56 +47,158 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/aboutText1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Know More About Us"
-            android:textSize="18sp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="25dp"/>
+            android:layout_marginTop="5dp">
 
-        <TextView
-            android:id="@+id/aboutText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="We are a dedicated group of hairstylist who wishes all the people can get the hairstyle they desire, as beauty can reflect oneself."
-            android:textSize="16sp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginRight="25dp"/>
+            <ImageView
+                android:id="@+id/serviceImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/logo_3"/>
 
-        <TextView
-            android:id="@+id/servicesText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Services \n\n All the service in this app is available in the salon. If there are any requirements need to add or specify for the hairstyle, please notify us before the booking or notify us at the store before the service."
-            android:textSize="16sp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="140dp"
-            android:layout_marginRight="25dp"/>
+            <TextView
+                android:id="@+id/aboutText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Know More About Us"
+                android:textSize="18sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/privacyPolicy2"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/aboutText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="We are a dedicated group of hairstylist who wishes all the people can get the hairstyle they desire, as beauty can reflect oneself."
+                android:textSize="16sp"
+                android:layout_marginLeft="-195dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="25dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="300dp"
-            android:layout_marginRight="25dp"
-            android:text="Privacy Policy
-                            \n\nInformation We Collect
-                            \n\na. Personal Information: When you sign up, book appointments, or interact with the App, we may collect information such as your name, email address, and phone number.
-                            \n\nb. Usage Data: We may collect information on how you interact with our App, including bookings, stylist, and features used on the App.
-                            \n\nHow We Use Your Personal Information
-                            \n\na. User Verification: We use registration information to verify users' eligibility.
-                            \n\nb. Booking Processing: Your booking information is used to book slots for the salon services.
-                            \n\nSecurity of Your Information
-                            \n\nWe take appropriate precautions to guard against unauthorised access, use, or disclosure of your personal information.
+            android:layout_marginTop="200dp">
+
+            <TextView
+                android:id="@+id/servicesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="25dp"
+                android:text="Services"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/servicesText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-95dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="25dp"
+                android:text="All the service in this app is available in the salon. If there are any requirements need to add or specify for the hairstyle, please notify us before the booking or notify us at the store before the service."
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="370dp">
+
+            <TextView
+                android:id="@+id/privacyPolicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="25dp"
+                android:text="Privacy Policy"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/privacyPolicy1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-140dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="25dp"
+                android:text="Information We Collect"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/privacyPolicy2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-210dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginRight="25dp"
+                android:text="a. Personal Information: When you sign up, book appointments, or interact with the App, we may collect information such as your name, email address, and phone number.
+                            \n\nb. Usage Data: We may collect information on how you interact with our App, including bookings, stylist, and features used on the App."
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/privacyPolicy3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-355dp"
+                android:layout_marginTop="280dp"
+                android:layout_marginRight="25dp"
+                android:text="How We Use Your Personal Information"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/privacyPolicy4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-342dp"
+                android:layout_marginTop="320dp"
+                android:layout_marginRight="25dp"
+                android:text="a. User Verification: We use registration information to verify users' eligibility.
+                            \n\nb. Booking Processing: Your booking information is used to book slots for the salon services."
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/privacyPolicy5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-355dp"
+                android:layout_marginTop="460dp"
+                android:layout_marginRight="25dp"
+                android:text="Security of Your Information"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/privacyPolicy6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-255dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginRight="25dp"
+                android:text="We take appropriate precautions to guard against unauthorised access, use, or disclosure of your personal information.
                             \n\nWe don't share your information to outside parties unless it's mandated by law."
-            android:textColor="#000000"
-            android:textSize="16sp" />
+                android:textSize="16sp" />
 
+        </LinearLayout>
 
 
     </RelativeLayout>

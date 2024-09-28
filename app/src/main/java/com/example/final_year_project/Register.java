@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private EditText registerName, registerEmail, registerPassword, registerPhone;
+    private CheckBox termsCheckbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class Register extends AppCompatActivity {
         registerEmail = findViewById(R.id.registerEmail);
         registerPassword = findViewById(R.id.registerPassword);
         registerPhone = findViewById(R.id.registerPhone);
+        termsCheckbox = findViewById(R.id.termsCheckbox);
         Button registerButton = findViewById(R.id.registerButton);
         TextView toLoginPage = findViewById(R.id.toLoginPage);
         TextView toTermsCondition = findViewById(R.id.toTermsCondition);
@@ -108,6 +111,10 @@ public class Register extends AppCompatActivity {
             registerPassword.setError("Password must contain at least one special character");
             registerPassword.requestFocus();
             return;
+        }
+        if (!termsCheckbox.isChecked()) {
+            Toast.makeText(Register.this, "You must agree to the Terms and Conditions", Toast.LENGTH_SHORT).show();
+            return; // Stop registration if checkbox is not checked
         }
 
         mAuth.createUserWithEmailAndPassword(email, password)

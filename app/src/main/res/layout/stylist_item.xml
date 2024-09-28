@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Book"
+        android:backgroundTint="@color/colorAccent"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="130dp"/>
 </LinearLayout>

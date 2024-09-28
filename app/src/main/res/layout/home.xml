@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <!-- Drawer Menu Layout -->
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
@@ -14,63 +16,62 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/home"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#00FFFFFF"
-            android:onClick="toHome"
-            android:src="@drawable/logo_1" />
+            <ImageButton
+                android:id="@+id/home"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#00FFFFFF"
+                android:onClick="toHome"
+                android:src="@drawable/logo_1" />
 
-        <ImageButton
-            android:id="@+id/menu"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginLeft="190dp"
-            android:background="@drawable/circular_button_background"
-            android:scaleType="centerInside"
-            android:onClick="openDrawer"
-            android:src="@drawable/burger_image" />
+            <ImageButton
+                android:id="@+id/menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/circular_button_background"
+                android:onClick="openDrawer"
+                android:scaleType="centerInside"
+                android:src="@drawable/burger_image" />
 
 
-        <ImageButton
-            android:id="@+id/logout"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/circular_button_background"
-            android:scaleType="centerInside"
-            android:onClick="logout"
-            android:src="@drawable/logout_image" />
+            <ImageButton
+                android:id="@+id/logout"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/circular_button_background"
+                android:onClick="logout"
+                android:scaleType="centerInside"
+                android:src="@drawable/logout_image" />
 
         </LinearLayout>
-        
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
             android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_marginTop="70dp">
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="This is Home Page"
-            android:textSize="24sp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"/>
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="This is Home Page"
+                android:textSize="24sp" />
 
         </RelativeLayout>
     </RelativeLayout>
 
-    <!-- Drawer Menu Layout -->
     <LinearLayout
         android:id="@+id/drawerMenu"
         android:layout_width="240dp"
@@ -79,50 +80,177 @@
         android:background="#FFFFFF"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="30dp"
-            android:text="Profile"
-            android:onClick="toProfile"/>
+        <include
+            layout="@layout/nav_header_main"></include>
 
-        <TextView
-            android:id="@+id/service"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="30dp"
-            android:text="Service"
-            android:onClick="toService"/>
+            android:layout_marginTop="25dp">
 
-        <TextView
-            android:id="@+id/about"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="30dp"
-            android:text="About"
-            android:onClick="toAbout"/>
+            <ImageButton
+                android:id="@+id/homeImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="30dp"
+                android:background="#FFFFFF"
+                android:scaleType="centerInside"
+                android:onClick="toHome"
+                android:src="@drawable/home_image" />
 
-        <TextView
-            android:id="@+id/contactUs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="30dp"
-            android:text="Contact Us"
-            android:onClick="toContactUs"/>
+            <TextView
+                android:id="@+id/homepage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11.5dp"
+                android:layout_marginLeft="15dp"
+                android:text="Home"
+                android:onClick="toHome"/>
 
-        <TextView
-            android:id="@+id/bookingHistory"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="30dp"
-            android:text="History"
-            android:onClick="toBookingHistory"/>
+            android:layout_marginTop="25dp">
+
+            <ImageButton
+                android:id="@+id/profileImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="30dp"
+                android:background="#FFFFFF"
+                android:scaleType="centerInside"
+                android:onClick="toProfile"
+                android:src="@drawable/profile_image" />
+
+            <TextView
+                android:id="@+id/profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11.5dp"
+                android:layout_marginLeft="15dp"
+                android:text="Profile"
+                android:onClick="toProfile"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <ImageButton
+                android:id="@+id/serviceImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="30dp"
+                android:background="#FFFFFF"
+                android:scaleType="centerInside"
+                android:onClick="toService"
+                android:src="@drawable/service2_image" />
+
+            <TextView
+                android:id="@+id/service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11.5dp"
+                android:layout_marginLeft="15dp"
+                android:text="Service"
+                android:onClick="toService"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <ImageButton
+                android:id="@+id/aboutImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="30dp"
+                android:background="#FFFFFF"
+                android:scaleType="centerInside"
+                android:onClick="toAbout"
+                android:src="@drawable/about_image" />
+
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11.5dp"
+                android:layout_marginLeft="15dp"
+                android:text="About"
+                android:onClick="toAbout"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <ImageButton
+                android:id="@+id/contactImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="30dp"
+                android:background="#FFFFFF"
+                android:scaleType="centerInside"
+                android:onClick="toContactUs"
+                android:src="@drawable/contact2_image" />
+
+            <TextView
+                android:id="@+id/contactUs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11.5dp"
+                android:layout_marginLeft="15dp"
+                android:text="Contact Us"
+                android:onClick="toContactUs"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <ImageButton
+                android:id="@+id/historyImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="30dp"
+                android:background="#FFFFFF"
+                android:scaleType="centerInside"
+                android:onClick="toBookingHistory"
+                android:src="@drawable/history_image" />
+
+            <TextView
+                android:id="@+id/bookingHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11.5dp"
+                android:layout_marginLeft="15dp"
+                android:text="History"
+                android:onClick="toBookingHistory"/>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

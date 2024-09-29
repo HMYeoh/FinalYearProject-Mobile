@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
-        android:background="#2596be">
+        android:background="@drawable/gradient1">
 
         <ImageView
             android:id="@+id/serviceImage"

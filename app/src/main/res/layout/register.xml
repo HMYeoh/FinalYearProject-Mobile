@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/mainLayout">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,13 +19,14 @@
             android:layout_height="150dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="110dp"
-            android:src="@drawable/logo_3"/>
+            android:src="@drawable/logo_6"/>
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="200dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="25dp"/>
@@ -44,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="270dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="25dp"/>
@@ -64,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Phone Number"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="340dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="25dp"/>
@@ -84,6 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Password"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="410dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="25dp"/>
@@ -113,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Agree to Terms and Condition"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="#00DBDE"
             android:textSize="16sp"
             android:layout_marginTop="482dp"
             android:layout_marginLeft="80dp"
@@ -135,6 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Already have an account?"
+            android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:layout_marginTop="590dp"
             android:layout_marginLeft="75dp"
@@ -145,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="#00DBDE"
             android:textSize="16sp"
             android:layout_marginTop="590dp"
             android:layout_marginLeft="265dp"

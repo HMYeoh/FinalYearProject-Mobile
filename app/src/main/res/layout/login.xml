@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/mainLayout">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +19,7 @@
             android:layout_height="150dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="110dp"
-            android:src="@drawable/logo_3"/>
+            android:src="@drawable/logo_6"/>
 
         <TextView
             android:id="@+id/textView1"
@@ -26,7 +28,8 @@
             android:text="Email"
             android:layout_marginTop="200dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="25dp"/>
+            android:layout_marginRight="25dp"
+            android:textColor="#FFFFFF"/>
 
         <EditText
             android:id="@+id/loginEmail"
@@ -46,7 +49,8 @@
             android:text="Password"
             android:layout_marginTop="280dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="25dp"/>
+            android:layout_marginRight="25dp"
+            android:textColor="#FFFFFF"/>
 
         <EditText
             android:id="@+id/loginPassword"
@@ -64,8 +68,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Forgot Password?"
+            android:textColor="#00DBDE"
             android:textSize="16sp"
-            android:textColor="@android:color/holo_blue_dark"
             android:layout_marginTop="350dp"
             android:layout_marginLeft="55dp"
             android:clickable="true"
@@ -90,14 +94,15 @@
             android:textSize="16sp"
             android:layout_marginTop="470dp"
             android:layout_marginLeft="65dp"
-            android:layout_marginRight="25dp" />
+            android:layout_marginRight="25dp"
+            android:textColor="#FFFFFF"/>
 
         <TextView
             android:id="@+id/toRegisterPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create One"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="#00DBDE"
             android:textSize="16sp"
             android:layout_marginTop="470dp"
             android:layout_marginLeft="235dp"

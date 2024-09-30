@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,7 @@ import java.util.Map;
 public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHolder> {
 
     private List<String> timeSlotList;
+    private List<String> bookedTimeSlots;
     private Context context;
     private String selectedDate;
     private FirebaseAuth mAuth;
@@ -32,6 +35,12 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
         this.selectedDate = selectedDate;
         mAuth = FirebaseAuth.getInstance(); // Initialize FirebaseAuth
         db = FirebaseFirestore.getInstance(); // Initialize FirebaseFirestore
+        bookedTimeSlots = new ArrayList<>();
+    }
+
+    public void setBookedTimeSlots(List<String> bookedSlots) {
+        this.bookedTimeSlots.clear();
+        this.bookedTimeSlots.addAll(bookedSlots);
     }
 
     public void setSelectedDate(String selectedDate) {
@@ -49,6 +58,19 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String timeSlot = timeSlotList.get(position);
         holder.timeSlotTextView.setText(timeSlot);
+
+        // Change appearance if the time slot is booked
+        if (bookedTimeSlots.contains(timeSlot)) {
+            holder.timeSlotTextView.setTextColor(context.getResources().getColor(android.R.color.darker_gray));
+            holder.bookSlotButton.setEnabled(false);
+            holder.bookSlotButton.setText("Booked");
+            holder.bookSlotButton.setBackgroundColor(context.getResources().getColor(android.R.color.darker_gray));
+        } else {
+            holder.timeSlotTextView.setTextColor(context.getResources().getColor(android.R.color.black));
+            holder.bookSlotButton.setEnabled(true);
+            holder.bookSlotButton.setText("Book");
+            holder.bookSlotButton.setBackgroundTintList(context.getResources().getColorStateList(R.color.colorAccent));
+        }
 
         holder.bookSlotButton.setOnClickListener(v -> {
             // Fetch the stylist data and save the reservation

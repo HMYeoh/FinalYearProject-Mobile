@@ -84,9 +84,29 @@ public class Date extends AppCompatActivity {
         timeSlots.add("4:00 PM - 5:00 PM");
         timeSlots.add("5:00 PM - 6:00 PM");
 
+        // Load booked time slots from Firestore "reservations" collection
+        db.collection("reservations")
+                .whereEqualTo("date", selectedDate) // Ensure to query by selected date
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        List<String> bookedSlots = new ArrayList<>();
+                        for (DocumentSnapshot document : task.getResult()) {
+                            String bookedSlot = document.getString("timeSlot");
+                            if (bookedSlot != null) {
+                                bookedSlots.add(bookedSlot);
+                            }
+                        }
+                        // Update the adapter with booked slots
+                        timeSlotAdapter.setBookedTimeSlots(bookedSlots);
+                        timeSlotAdapter.notifyDataSetChanged();
+                    }
+                });
+
         // Notify the adapter to update the RecyclerView
         timeSlotAdapter.notifyDataSetChanged();
     }
+
 
     private void deleteCurrentUserData() {
         String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail(); // Get current user's email

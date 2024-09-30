@@ -70,6 +70,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="Back"
                 android:textColor="#FFFFFF"
+                android:backgroundTint="@color/colorAccent"
                 android:textSize="16sp"
                 />
 

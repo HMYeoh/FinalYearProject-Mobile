@@ -41,6 +41,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
     public void setBookedTimeSlots(List<String> bookedSlots) {
         this.bookedTimeSlots.clear();
         this.bookedTimeSlots.addAll(bookedSlots);
+        notifyDataSetChanged();
     }
 
     public void setSelectedDate(String selectedDate) {
@@ -61,15 +62,17 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
 
         // Change appearance if the time slot is booked
         if (bookedTimeSlots.contains(timeSlot)) {
+            // Mark as booked
             holder.timeSlotTextView.setTextColor(context.getResources().getColor(android.R.color.darker_gray));
             holder.bookSlotButton.setEnabled(false);
             holder.bookSlotButton.setText("Booked");
             holder.bookSlotButton.setBackgroundColor(context.getResources().getColor(android.R.color.darker_gray));
         } else {
+            // Available time slot
             holder.timeSlotTextView.setTextColor(context.getResources().getColor(android.R.color.black));
             holder.bookSlotButton.setEnabled(true);
             holder.bookSlotButton.setText("Book");
-            holder.bookSlotButton.setBackgroundTintList(context.getResources().getColorStateList(R.color.colorAccent));
+            holder.bookSlotButton.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
         }
 
         holder.bookSlotButton.setOnClickListener(v -> {
@@ -77,6 +80,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
             fetchStylistData(timeSlot);
         });
     }
+
 
     @Override
     public int getItemCount() {

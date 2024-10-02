@@ -98,14 +98,15 @@ public class Date extends AppCompatActivity {
                             }
                         }
                         // Update the adapter with booked slots
-                        timeSlotAdapter.setBookedTimeSlots(bookedSlots);
-                        timeSlotAdapter.notifyDataSetChanged();
+                        timeSlotAdapter.setBookedTimeSlots(bookedSlots); // Set booked time slots
+                        timeSlotAdapter.notifyDataSetChanged(); // Notify adapter of data change
                     }
                 });
 
         // Notify the adapter to update the RecyclerView
         timeSlotAdapter.notifyDataSetChanged();
     }
+
 
 
     private void deleteCurrentUserData() {

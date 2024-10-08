@@ -21,9 +21,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class StylistAdapter extends RecyclerView.Adapter<StylistAdapter.ViewHolder> {
 
@@ -99,8 +97,8 @@ public class StylistAdapter extends RecyclerView.Adapter<StylistAdapter.ViewHold
                                                     currentUserName, // Use the retrieved user name
                                                     stylist.getUsername(),
                                                     stylist.getProfilePictureURL(),
-                                                    bookingDetailsList
-                                            );
+                                                    bookingDetailsList,
+                                                    stylist.getBranchName());
 
                                             // Save to the "stylists" collection
                                             firestore.collection("stylists")

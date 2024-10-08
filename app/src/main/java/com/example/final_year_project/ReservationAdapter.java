@@ -31,6 +31,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         holder.dateTextView.setText(reservation.getDate());
         holder.timeSlotTextView.setText(reservation.getTimeSlot());
         holder.stylistNameTextView.setText(reservation.getStylistName());
+        holder.branchNameTextView.setText(reservation.getBranchName());
 
         // Bind the items (previously services)
         StringBuilder itemDetails = new StringBuilder();
@@ -49,13 +50,14 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
     }
 
     static class ReservationViewHolder extends RecyclerView.ViewHolder {
-        TextView dateTextView, timeSlotTextView, stylistNameTextView, itemsTextView;
+        TextView dateTextView, timeSlotTextView, stylistNameTextView, branchNameTextView, itemsTextView;
 
         public ReservationViewHolder(@NonNull View itemView) {
             super(itemView);
             dateTextView = itemView.findViewById(R.id.date);
             timeSlotTextView = itemView.findViewById(R.id.timeSlot);
             stylistNameTextView = itemView.findViewById(R.id.stylistName);
+            branchNameTextView = itemView.findViewById(R.id.branchName);
             itemsTextView = itemView.findViewById(R.id.items);  // Updated to use itemsTextView for ItemModel
         }
     }

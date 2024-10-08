@@ -84,6 +84,26 @@
             android:textColor="#ffffff"/>
 
         <TextView
+            android:id="@+id/branchNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:text="Branch:"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/branchName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="-22dp"
+            android:text="Branch"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
             android:id="@+id/items"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

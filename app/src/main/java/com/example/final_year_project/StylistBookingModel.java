@@ -8,17 +8,19 @@ public class StylistBookingModel {
     private String stylistName;
     private String stylistProfilePictureURL;
     private List<BookingDetail> services;
+    private String branchName;
 
     public StylistBookingModel() {
         // Required for Firebase
     }
 
-    public StylistBookingModel(String userEmail, String userName, String stylistName, String stylistProfilePictureURL, List<BookingDetail> services) {
+    public StylistBookingModel(String userEmail, String userName, String stylistName, String stylistProfilePictureURL, List<BookingDetail> services, String branchName) {
         this.userEmail = userEmail;
         this.userName = userName;
         this.stylistName = stylistName;
         this.stylistProfilePictureURL = stylistProfilePictureURL;
         this.services = services;
+        this.branchName = branchName;
     }
 
     public String getUserEmail() {
@@ -59,6 +61,14 @@ public class StylistBookingModel {
 
     public void setServices(List<BookingDetail> services) {
         this.services = services;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
     }
 }
 

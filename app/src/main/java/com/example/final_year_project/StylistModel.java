@@ -3,14 +3,16 @@ package com.example.final_year_project;
 public class StylistModel {
     private String username;
     private String profilePictureURL;
+    private String branchName;
 
     public StylistModel() {
         // Required for Firebase
     }
 
-    public StylistModel(String username, String profilePictureURL) {
+    public StylistModel(String username, String profilePictureURL, String branchName) {
         this.username = username;
         this.profilePictureURL = profilePictureURL;
+        this.branchName = branchName;
     }
 
     public String getUsername() {
@@ -27,5 +29,13 @@ public class StylistModel {
 
     public void setProfilePictureURL(String profilePictureURL) {
         this.profilePictureURL = profilePictureURL;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
     }
 }

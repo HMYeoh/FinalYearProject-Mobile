@@ -3,20 +3,21 @@ package com.example.final_year_project;
 import java.util.List;
 
 public class ReservationModel {
-    private String date, timeSlot, userEmail, userName, userId, stylistName;
+    private String date, timeSlot, userEmail, userName, userId, stylistName, branchName;
     private List<ItemModel> services;  // Updated from ServiceModel to ItemModel
 
     public ReservationModel() {
         // Required empty constructor
     }
 
-    public ReservationModel(String date, String timeSlot, String userEmail, String userName, String userId, String stylistName, List<ItemModel> services) {
+    public ReservationModel(String date, String timeSlot, String userEmail, String userName, String userId, String stylistName, String branchName, List<ItemModel> services) {
         this.date = date;
         this.timeSlot = timeSlot;
         this.userEmail = userEmail;
         this.userName = userName;
         this.userId = userId;
         this.stylistName = stylistName;
+        this.branchName = branchName;
         this.services = services;
     }
 
@@ -41,4 +42,12 @@ public class ReservationModel {
 
     public List<ItemModel> getServices() { return services; }  // Updated to use ItemModel
     public void setServices(List<ItemModel> services) { this.services = services; }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
 }

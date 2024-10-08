@@ -111,10 +111,11 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
                             for (DocumentSnapshot document : task.getResult()) {
                                 // Extract stylist data
                                 String stylistName = document.getString("stylistName");
+                                String branchName = document.getString("branchName");
                                 List<Map<String, String>> services = (List<Map<String, String>>) document.get("services");
 
                                 // Fetch user name and save reservation
-                                fetchUserNameAndSaveReservation(userEmail, selectedDate, timeSlot, stylistName, services);
+                                fetchUserNameAndSaveReservation(userEmail, selectedDate, timeSlot, stylistName, branchName, services);
                             }
                         } else {
                             Toast.makeText(context, "Stylist data not found", Toast.LENGTH_SHORT).show();
@@ -125,7 +126,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
                 });
     }
 
-    private void fetchUserNameAndSaveReservation(String userEmail, String date, String timeSlot, String stylistName, List<Map<String, String>> services) {
+    private void fetchUserNameAndSaveReservation(String userEmail, String date, String timeSlot, String stylistName, String branchName, List<Map<String, String>> services) {
         db.collection("users")
                 .whereEqualTo("email", userEmail) // Assuming you have the user email stored in the "users" collection
                 .get()
@@ -138,7 +139,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
                                 String userId = document.getId(); // Get the document ID which is the user ID
 
                                 // Save reservation with stylist and user data
-                                saveReservation(date, timeSlot, stylistName, userEmail, userName, userId, services);
+                                saveReservation(date, timeSlot, stylistName, branchName, userEmail, userName, userId, services);
                             }
                         } else {
                             Toast.makeText(context, "User data not found", Toast.LENGTH_SHORT).show();
@@ -149,7 +150,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
                 });
     }
 
-    private void saveReservation(String date, String timeSlot, String stylistName, String userEmail, String userName, String userId, List<Map<String, String>> services) {
+    private void saveReservation(String date, String timeSlot, String stylistName, String branchName, String userEmail, String userName, String userId, List<Map<String, String>> services) {
         // Check if the stylist is already booked for the selected date and time slot
         db.collection("reservations")
                 .whereEqualTo("date", date)
@@ -167,6 +168,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
                             reservation.put("date", date);
                             reservation.put("timeSlot", timeSlot);
                             reservation.put("stylistName", stylistName);
+                            reservation.put("branchName", branchName);
                             reservation.put("userEmail", userEmail);
                             reservation.put("userName", userName); // Add the user name to the reservation
                             reservation.put("userId", userId); // Add the user ID to the reservation

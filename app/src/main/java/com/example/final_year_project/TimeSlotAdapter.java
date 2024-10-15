@@ -156,6 +156,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
                 .whereEqualTo("date", date)
                 .whereEqualTo("timeSlot", timeSlot)
                 .whereEqualTo("stylistName", stylistName)
+                .whereEqualTo("branchName", branchName)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

@@ -27,6 +27,8 @@ public class Date extends AppCompatActivity {
     private TimeSlotAdapter timeSlotAdapter;
     private List<String> timeSlots;
     private String selectedDate;
+    private String stylistName; // To store stylist name
+    private String branchName;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -47,6 +49,9 @@ public class Date extends AppCompatActivity {
         timeSlotAdapter = new TimeSlotAdapter(timeSlots, this, null); // Initialize with null
         timeSlotRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         timeSlotRecyclerView.setAdapter(timeSlotAdapter);
+
+        // Fetch the stylist name and branch name from Firestore
+        fetchStylistAndBranchName();
 
         // Handle calendar date selection
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
@@ -70,6 +75,24 @@ public class Date extends AppCompatActivity {
         });
     }
 
+    private void fetchStylistAndBranchName() {
+        String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail(); // Get current user's email
+
+        // Fetch stylist data based on user email from the "stylists" collection
+        db.collection("stylists")
+                .whereEqualTo("userEmail", userEmail) // Query by userEmail
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                        DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                        stylistName = document.getString("stylistName");
+                        branchName = document.getString("branchName");
+                    } else {
+                        Log.w("FetchStylist", "No stylist data found for the user.");
+                    }
+                });
+    }
+
     private void loadTimeSlots() {
         // Clear the current list
         timeSlots.clear();
@@ -87,6 +110,8 @@ public class Date extends AppCompatActivity {
         // Load booked time slots from Firestore "reservations" collection
         db.collection("reservations")
                 .whereEqualTo("date", selectedDate) // Ensure to query by selected date
+                .whereEqualTo("stylistName", stylistName) // Ensure to query by stylist name
+                .whereEqualTo("branchName", branchName)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

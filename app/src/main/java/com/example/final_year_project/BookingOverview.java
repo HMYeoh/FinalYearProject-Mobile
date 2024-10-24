@@ -185,6 +185,12 @@ public class BookingOverview extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toInbox(View view) {
+        Intent intent = new Intent(this, Inbox.class);
+        TextView toInbox = findViewById(R.id.inbox);
+        startActivity(intent);
+    }
+
     private void logout() {
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(BookingOverview.this, "Logged out successfully", Toast.LENGTH_SHORT).show();

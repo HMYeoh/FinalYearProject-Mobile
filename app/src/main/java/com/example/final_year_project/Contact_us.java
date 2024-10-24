@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -58,6 +59,7 @@ public class Contact_us extends AppCompatActivity {
                     contact.put("Username", Username);
                     contact.put("Subject", Subject);
                     contact.put("Message", Message);
+                    contact.put("createdAt", FieldValue.serverTimestamp()); // Add timestamp
 
                     // Save the details to Firestore
                     db.collection("contact")

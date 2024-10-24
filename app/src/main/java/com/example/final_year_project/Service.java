@@ -360,4 +360,10 @@ public class Service extends AppCompatActivity {
         TextView toBookingHistory = findViewById(R.id.bookingHistory);
         startActivity(intent);
     }
+
+    public void toInbox(View view) {
+        Intent intent = new Intent(this, Inbox.class);
+        TextView toInbox = findViewById(R.id.inbox);
+        startActivity(intent);
+    }
 }

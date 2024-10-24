@@ -34,6 +34,8 @@
         <activity android:name=".Stylist"></activity>
         <activity android:name=".Date"></activity>
         <activity android:name=".BookingHistory"></activity>
+        <activity android:name=".Inbox"></activity>
+        <activity android:name=".MessageDetail"></activity>
     </application>
 
 </manifest>

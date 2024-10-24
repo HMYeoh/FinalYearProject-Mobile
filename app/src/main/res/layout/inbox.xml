@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Drawer Menu Layout -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,11 +19,11 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <ImageButton
@@ -36,11 +38,11 @@
                 android:id="@+id/menu"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="0dp"
                 android:layout_marginLeft="190dp"
+                android:layout_marginTop="0dp"
                 android:background="@drawable/circular_button_background"
-                android:scaleType="centerInside"
                 android:onClick="openDrawer"
+                android:scaleType="centerInside"
                 android:src="@drawable/burger_image" />
 
 
@@ -48,75 +50,50 @@
                 android:id="@+id/logout"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="0dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
                 android:background="@drawable/circular_button_background"
-                android:scaleType="centerInside"
                 android:onClick="logout"
+                android:scaleType="centerInside"
                 android:src="@drawable/logout_image" />
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Booking Overview"
-                android:textSize="24sp"
-                android:layout_marginTop="75dp"
-                android:layout_marginLeft="90dp"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Inbox"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="380dp"
-            android:layout_height="400dp"
+            android:layout_height="550dp"
             android:layout_marginTop="120dp" />
 
-        <RelativeLayout
-            android:id="@+id/bookingFooter"
-            android:layout_width="fill_parent"
+        <TextView
+            android:id="@+id/noMessagesText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#FEFAFD"
-            android:gravity="center">
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/black" />
-
-            <Button
-                android:id="@+id/backToService"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Back"
-                android:backgroundTint="@color/colorAccent"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:onClick="toService"/>
-
-            <Button
-                android:id="@+id/continueToStylist"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Continue"
-                android:backgroundTint="@color/colorAccent"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:onClick="toStylist"/>
-        </RelativeLayout>
-
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:text="No messages in inbox"
+            android:textSize="18sp"
+            android:textColor="@android:color/darker_gray" />
     </RelativeLayout>
 
-    <!-- Drawer Menu Layout -->
     <LinearLayout
         android:id="@+id/drawerMenu"
         android:layout_width="240dp"
@@ -323,6 +300,7 @@
                 android:onClick="toInbox"/>
 
         </LinearLayout>
+
 
     </LinearLayout>
 

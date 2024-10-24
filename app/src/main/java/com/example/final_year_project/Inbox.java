@@ -10,26 +10,49 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Home extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Inbox extends AppCompatActivity {
 
     ImageButton openDrawer;
     DrawerLayout drawerLayout;
-    ImageButton logoutButton;  // Add a reference for the logout button
+    ImageButton logoutButton;
+    private RecyclerView recyclerView;
+    private MessageAdapter messageAdapter;
+    private List<MessageModel> messageList;
+    private FirebaseFirestore db;
+    private String userId;
+    private TextView noMessagesText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.inbox);
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         TextView userNameTextView = findViewById(R.id.userName);
+        noMessagesText = findViewById(R.id.noMessagesText);
+
+        if (currentUser != null) {
+            userId = currentUser.getUid(); // Get current user UID
+            db = FirebaseFirestore.getInstance();
+            setupRecyclerView();
+            fetchMessages();
+        }
 
         if (currentUser != null) {
             String userId = currentUser.getUid(); // Get current user UID
@@ -56,7 +79,6 @@ public class Home extends AppCompatActivity {
             Log.d("HomeActivity", "No user is logged in.");
             userNameTextView.setText("User Name"); // Fallback
         }
-
 
         drawerLayout = findViewById(R.id.drawerLayout);
         openDrawer = findViewById(R.id.menu);
@@ -121,6 +143,40 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    private void setupRecyclerView() {
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        messageList = new ArrayList<>();
+        messageAdapter = new MessageAdapter(messageList);
+        recyclerView.setAdapter(messageAdapter);
+    }
+
+    private void fetchMessages() {
+        db.collection("inbox")
+                .whereEqualTo("userId", userId)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            MessageModel message = document.toObject(MessageModel.class);
+                            messageList.add(message);
+                        }
+                        messageAdapter.notifyDataSetChanged();
+
+                        // Check if there are no messages and update the visibility of the TextView
+                        if (messageList.isEmpty()) {
+                            noMessagesText.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+                        } else {
+                            noMessagesText.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        Log.d("Inbox", "Error getting documents: ", task.getException());
+                    }
+                });
+    }
+
     public void toAbout(View view) {
         Intent intent = new Intent(this, About.class);
         TextView toAbout = findViewById(R.id.about);
@@ -166,9 +222,9 @@ public class Home extends AppCompatActivity {
     // Logout method
     private void logout() {
         FirebaseAuth.getInstance().signOut();  // Sign out from Firebase
-        Toast.makeText(Home.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Inbox.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
         // Redirect to the login screen
-        Intent intent = new Intent(Home.this, Login.class);
+        Intent intent = new Intent(Inbox.this, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);  // Clear task to prevent returning back
         startActivity(intent);
         finish();  // Finish the Home activity

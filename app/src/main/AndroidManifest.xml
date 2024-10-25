@@ -36,6 +36,9 @@
         <activity android:name=".BookingHistory"></activity>
         <activity android:name=".Inbox"></activity>
         <activity android:name=".MessageDetail"></activity>
+        <activity android:name=".Portfolio"></activity>
+        <activity android:name=".Branch"></activity>
+        <activity android:name=".BranchDetail"></activity>
     </application>
 
 </manifest>

@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:text="Welcome"
+                android:text="Portfolio"
                 android:textSize="30dp"/>
 
             <TextView
@@ -71,91 +71,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="50dp"
-                android:text="Achieve The Beauty You Desire Today"
+                android:text="Discover Our Previous Works"
                 android:textSize="18dp"/>
 
-            <RelativeLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="190dp">
-
-                <RelativeLayout
-                    android:id="@+id/portfolio"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/gradient2"
-                    android:onClick="toPortfolio">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="25dp"
-                        android:text="Portfolio"
-                        android:textColor="#FFFFFF"
-                        android:textSize="30dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="25dp"
-                        android:text="Discover Our Previous Works"
-                        android:textColor="#FFFFFF"
-                        android:layout_alignParentBottom="true"
-                        android:textSize="14dp"/>
-
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:src="@drawable/portfolio"
-                    android:layout_alignParentRight="true"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="190dp">
-
-                <RelativeLayout
-                    android:id="@+id/branch"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:background="@drawable/gradient2"
-                    android:layout_margin="15dp"
-                    android:onClick="toBranch">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Branch"
-                        android:textSize="30dp"
-                        android:padding="25dp"
-                        android:textColor="#FFFFFF"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="25dp"
-                        android:text="Discover Our Branchs"
-                        android:textColor="#FFFFFF"
-                        android:layout_alignParentBottom="true"
-                        android:textSize="14dp"/>
-
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:src="@drawable/location"
-                    android:layout_alignParentRight="true"/>
-
-            </RelativeLayout>
-
-
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

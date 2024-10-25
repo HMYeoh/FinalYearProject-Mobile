@@ -17,17 +17,33 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import java.util.ArrayList;
 
-public class Home extends AppCompatActivity {
+public class Branch extends AppCompatActivity {
 
     ImageButton openDrawer;
     DrawerLayout drawerLayout;
-    ImageButton logoutButton;  // Add a reference for the logout button
+    ImageButton logoutButton;
+    private RecyclerView recyclerView;
+    private BranchAdapter branchAdapter;
+    private ArrayList<BranchModel> branchList;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.branch);
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        branchList = new ArrayList<>();
+        branchAdapter = new BranchAdapter(this, branchList);
+        recyclerView.setAdapter(branchAdapter);
+
+        fetchBranchData();
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         TextView userNameTextView = findViewById(R.id.userName);
@@ -122,6 +138,28 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    private void fetchBranchData() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference branchesRef = db.collection("branch");
+
+        branchesRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                branchList.clear();
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    String branch = document.getString("branch");
+                    String name = document.getString("name");
+                    String phone = document.getString("phone");
+
+                    BranchModel branchModel = new BranchModel(branch, name, phone);
+                    branchList.add(branchModel);
+                }
+                branchAdapter.notifyDataSetChanged();
+            } else {
+                Log.d("BranchActivity", "Error getting documents: ", task.getException());
+            }
+        });
+    }
+
     public void toAbout(View view) {
         Intent intent = new Intent(this, About.class);
         TextView toAbout = findViewById(R.id.about);
@@ -170,18 +208,12 @@ public class Home extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void toBranch(View view) {
-        Intent intent = new Intent(this, Branch.class);
-        RelativeLayout toBranch = findViewById(R.id.branch);
-        startActivity(intent);
-    }
-
     // Logout method
     private void logout() {
         FirebaseAuth.getInstance().signOut();  // Sign out from Firebase
-        Toast.makeText(Home.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Branch.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
         // Redirect to the login screen
-        Intent intent = new Intent(Home.this, Login.class);
+        Intent intent = new Intent(Branch.this, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);  // Clear task to prevent returning back
         startActivity(intent);
         finish();  // Finish the Home activity

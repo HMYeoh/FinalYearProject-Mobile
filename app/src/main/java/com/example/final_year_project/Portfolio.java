@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,20 +16,36 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
-public class Home extends AppCompatActivity {
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Portfolio extends AppCompatActivity {
 
     ImageButton openDrawer;
     DrawerLayout drawerLayout;
-    ImageButton logoutButton;  // Add a reference for the logout button
+    ImageButton logoutButton;
+    private RecyclerView recyclerView;
+    private PortfolioAdapter adapter;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.portfolio);
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         TextView userNameTextView = findViewById(R.id.userName);
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3)); // 3 columns, change as needed
+
+        db = FirebaseFirestore.getInstance();
+        loadPortfolioImages();
 
         if (currentUser != null) {
             String userId = currentUser.getUid(); // Get current user UID
@@ -122,6 +137,26 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    private void loadPortfolioImages() {
+        db.collection("portfolio")
+                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    List<String> imageUrls = new ArrayList<>();
+                    for (DocumentSnapshot document : queryDocumentSnapshots) {
+                        String imageUrl = document.getString("imageUrl");
+                        if (imageUrl != null) {
+                            imageUrls.add(imageUrl);
+                        }
+                    }
+                    adapter = new PortfolioAdapter(this, imageUrls);
+                    recyclerView.setAdapter(adapter);
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(Portfolio.this, "Failed to load images", Toast.LENGTH_SHORT).show();
+                });
+    }
+
     public void toAbout(View view) {
         Intent intent = new Intent(this, About.class);
         TextView toAbout = findViewById(R.id.about);
@@ -164,24 +199,12 @@ public class Home extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void toPortfolio(View view) {
-        Intent intent = new Intent(this, Portfolio.class);
-        RelativeLayout toPortfolio = findViewById(R.id.portfolio);
-        startActivity(intent);
-    }
-
-    public void toBranch(View view) {
-        Intent intent = new Intent(this, Branch.class);
-        RelativeLayout toBranch = findViewById(R.id.branch);
-        startActivity(intent);
-    }
-
     // Logout method
     private void logout() {
         FirebaseAuth.getInstance().signOut();  // Sign out from Firebase
-        Toast.makeText(Home.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Portfolio.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
         // Redirect to the login screen
-        Intent intent = new Intent(Home.this, Login.class);
+        Intent intent = new Intent(Portfolio.this, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);  // Clear task to prevent returning back
         startActivity(intent);
         finish();  // Finish the Home activity

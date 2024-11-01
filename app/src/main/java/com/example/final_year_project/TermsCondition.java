@@ -22,4 +22,10 @@ public class TermsCondition extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toHome(View view) {
+        Intent intent = new Intent(this, Home.class);
+        ImageButton toHome = findViewById(R.id.home);
+        startActivity(intent);
+    }
+
 }

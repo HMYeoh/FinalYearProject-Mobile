@@ -42,7 +42,7 @@ public class Home extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                String userName = document.getString("name"); // Assuming your field is named "name"
+                                String userName = document.getString("name");
                                 userNameTextView.setText(userName != null ? userName : "User Name");
                             } else {
                                 Log.d("HomeActivity", "No such user document");

@@ -25,14 +25,13 @@ public class Contact_us extends AppCompatActivity {
     EditText inputUsername, inputSubject, inputMessage;
     Button submitBtn;
     FirebaseFirestore db;
-    FirebaseAuth mAuth; // Firebase Auth instance to get the current user
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_us);
 
-        // Initialize Firestore and Firebase Auth
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
@@ -44,35 +43,44 @@ public class Contact_us extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the current logged-in user
+                String Username = inputUsername.getText().toString().trim();
+                String Subject = inputSubject.getText().toString().trim();
+                String Message = inputMessage.getText().toString().trim();
+
+                if (Username.isEmpty()) {
+                    Toast.makeText(Contact_us.this, "Please enter your Username", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Subject.isEmpty()) {
+                    Toast.makeText(Contact_us.this, "Please enter the Subject", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Message.isEmpty()) {
+                    Toast.makeText(Contact_us.this, "Please enter your Message", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 FirebaseUser currentUser = mAuth.getCurrentUser();
 
                 if (currentUser != null) {
-                    String userId = currentUser.getUid(); // Get the user ID
-                    String Username = inputUsername.getText().toString();
-                    String Subject = inputSubject.getText().toString();
-                    String Message = inputMessage.getText().toString();
+                    String userId = currentUser.getUid();
 
-                    // Create a map with the contact details
                     Map<String, Object> contact = new HashMap<>();
-                    contact.put("userId", userId); // Save the user ID
+                    contact.put("userId", userId);
                     contact.put("Username", Username);
                     contact.put("Subject", Subject);
                     contact.put("Message", Message);
-                    contact.put("createdAt", FieldValue.serverTimestamp()); // Add timestamp
+                    contact.put("createdAt", FieldValue.serverTimestamp());
 
-                    // Save the details to Firestore
                     db.collection("contact")
                             .add(contact)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Toast.makeText(Contact_us.this, "Message sent successfully", Toast.LENGTH_SHORT).show();
-
-                                    // Navigate to Home.java after success
                                     Intent intent = new Intent(Contact_us.this, Home.class);
                                     startActivity(intent);
-                                    finish(); // Optionally, close the current activity
+                                    finish();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -82,14 +90,12 @@ public class Contact_us extends AppCompatActivity {
                                 }
                             });
                 } else {
-                    // If user is not logged in, show a message or redirect to login
                     Toast.makeText(Contact_us.this, "Please log in to send a message", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    // Method to navigate back to home when ImageButton is clicked
     public void toHome(View view) {
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);

@@ -109,8 +109,8 @@ public class Date extends AppCompatActivity {
 
         // Load booked time slots from Firestore "reservations" collection
         db.collection("reservations")
-                .whereEqualTo("date", selectedDate) // Ensure to query by selected date
-                .whereEqualTo("stylistName", stylistName) // Ensure to query by stylist name
+                .whereEqualTo("date", selectedDate)
+                .whereEqualTo("stylistName", stylistName)
                 .whereEqualTo("branchName", branchName)
                 .get()
                 .addOnCompleteListener(task -> {

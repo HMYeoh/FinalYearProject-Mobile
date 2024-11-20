@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="1dp"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:background="@drawable/gradient1">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="10dp">
+
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:text="Date:"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="-22dp"
+            android:text="Date"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/timeSlotText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:text="Time Slot:"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/timeSlot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="-22dp"
+            android:text="Time Slot"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/stylistNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:text="Stylist Name:"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/stylistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="-22dp"
+            android:text="Stylist"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/branchNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:text="Branch:"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/branchName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="-22dp"
+            android:text="Branch"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:text="Items"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:layout_marginBottom="10dp"/>
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+

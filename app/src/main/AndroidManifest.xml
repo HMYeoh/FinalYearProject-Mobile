@@ -13,7 +13,7 @@
         android:theme="@style/Theme.FinalYearProject"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Register" />
+        <!--<activity android:name=".Login" />-->
+        <activity android:name=".Home"></activity>
+        <activity android:name=".About"></activity>
+        <activity android:name=".Profile"></activity>
+        <activity android:name=".Contact_us"></activity>
+        <activity android:name=".Forgot_password"></activity>
+        <activity android:name=".Service"></activity>
+        <activity android:name=".BookingOverview"></activity>
+        <activity android:name=".TermsCondition"></activity>
+        <activity android:name=".Stylist"></activity>
+        <activity android:name=".Date"></activity>
+        <activity android:name=".BookingHistory"></activity>
+        <activity android:name=".Inbox"></activity>
+        <activity android:name=".MessageDetail"></activity>
+        <activity android:name=".Portfolio"></activity>
+        <activity android:name=".Branch"></activity>
+        <activity android:name=".BranchDetail"></activity>
     </application>
 
 </manifest>

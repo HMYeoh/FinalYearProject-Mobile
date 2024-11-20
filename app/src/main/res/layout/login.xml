@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/mainLayout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/serviceImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="110dp"
+            android:src="@drawable/logo_6"/>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="25dp"
+            android:textColor="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/loginEmail"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"
+            android:ems="10"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="220dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="25dp"
+            android:textColor="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:ems="10"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="300dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp" />
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:textColor="#00DBDE"
+            android:textSize="16sp"
+            android:layout_marginTop="350dp"
+            android:layout_marginLeft="55dp"
+            android:clickable="true"
+            android:onClick="toForgotPassword"/>
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/colorAccent"
+            android:layout_marginTop="400dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp" />
+
+        <TextView
+            android:id="@+id/createOneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?"
+            android:textSize="16sp"
+            android:layout_marginTop="470dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="25dp"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/toRegisterPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create One"
+            android:textColor="#00DBDE"
+            android:textSize="16sp"
+            android:layout_marginTop="470dp"
+            android:layout_marginLeft="235dp"
+            android:layout_marginRight="25dp"
+            android:onClick="toRegister"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

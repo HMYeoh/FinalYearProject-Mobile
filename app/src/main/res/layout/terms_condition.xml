@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/termsAndCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="#2596be"
+            android:padding="15dp"
+            android:text="Terms and Condition"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:backgroundTint="#2596be"
+            android:onClick="toRegister"
+            android:src="@drawable/close_image" />
+
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/termsText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Acceptance of Terms"
+                android:textSize="18sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You accept these Terms and Conditions as well as our Privacy Policy by creating an account on [Your Salon's Name]. Your continuing use of our services indicates that you agree to any updates we may make to these terms, which we may update from time to time."
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/termsText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booking and Appointments"
+                android:textSize="18sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="220dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booking Procedure"
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="260dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Once a booking is made, you will receive a confirmation email. If you do not receive confirmation, please contact us immediately."
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="280dp"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/termsText6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arrival Time"
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="350dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kindly arrive ten minutes or more early than scheduled. There could be a reschedule or reduction in the service time for late arrivals."
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="370dp"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/termsText8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Responsibilities"
+                android:textSize="18sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="450dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account Information"
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="490dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By registering, you warrant that the information you submit is true and current. It is your responsibility to protect the privacy of your login information."
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="510dp"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/termsText11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal Conduct"
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="600dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By using our services, you pledge to treat our employees and other clients with respect. If someone disobeys this requirement, we reserve the right to deny them service."
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="620dp"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/termsText13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Changes and Modifications"
+                android:textSize="18sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="720dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="We have the right to change or stop any service at any time without any notice. We will let you know if these changes will influence your appointment and provide you with some other options."
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="760dp"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/termsText15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Liability"
+                android:textSize="18sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="880dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Service Disclaimer"
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="920dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Real Salon is dedicated to offering top-notch services. That being said, we disclaim all liability for any harm, allergic response, or unhappiness brought on by a service."
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="940dp"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/termsText18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Termination of Service"
+                android:textSize="18sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="1040dp"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/termsText19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If you break these rules, we retain the right to suspend or close your account. By getting in touch with us, you can also close your account at any moment."
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="1080dp"
+                android:layout_marginRight="25dp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="120dp"
+            android:background="@color/black" />
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="-15dp"
+            android:layout_marginLeft="110dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo_1"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose a Stylist"
+            android:textSize="24sp"
+            android:layout_marginTop="75dp"
+            android:layout_marginLeft="90dp"
+            android:layout_centerHorizontal="true"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="380dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="120dp" />
+
+        <RelativeLayout
+            android:id="@+id/bookingFooter"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#FEFAFD"
+            android:gravity="center">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/backToBookingOverview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Back"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/colorAccent"
+                android:textSize="16sp"
+                android:onClick="toBookingOverview"/>
+
+            <Spinner
+                android:id="@+id/branchSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="20dp"
+                android:spinnerMode="dropdown" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
